@@ -1,0 +1,48 @@
+# ==============================================================================
+# DESPLIEGUE CORPORATIVO AISLADO: BI DASHBOARD (MATCHING AI)
+# ==============================================================================
+# Contenedor: amuse_bi_dashboard (independiente y aislado)
+# Red: amuse_global_network (conecta con Nginx institucional sin exponer puertos al exterior)
+# ==============================================================================
+
+name: op_matching_ai
+
+services:
+  amuse_bi_dashboard:
+    build:
+      context: .
+      dockerfile: apps/dashboard/Dockerfile
+    container_name: amuse_bi_dashboard
+    restart: unless-stopped
+    expose:
+      - "8501"
+    ports:
+      - "8501:8501"
+    networks:
+      - amuse_global_network
+    env_file:
+      - apps/dashboard/.env
+    environment:
+      - CUSTOM_DASHBOARDS_DIR=/app/apps/dashboard/custom_pages
+    volumes:
+      - ./data/output:/app/data/output:ro
+      - ./data/cache:/app/data/cache:ro
+      - ../shared_streamlit_pages:/app/apps/dashboard/custom_pages:ro
+      - ./infrastructure/credentials:/app/infrastructure/credentials:ro
+      - ./data/Tencent:/app/data/Tencent
+      - ./data/Youku:/app/data/Youku
+      - ./data/Iqiyi:/app/data/Iqiyi
+      - ./data/amazon:/app/data/amazon
+      - ./core:/app/core
+      - ./apps/dashboard:/app/apps/dashboard
+      - ./scripts:/app/scripts
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8501/_stcore/health || curl -f http://localhost:8501/bi/_stcore/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+networks:
+  amuse_global_network:
+    external: true

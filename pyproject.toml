@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amazon-broadkast-mapper"
+version = "0.1.0"
+description = "Map and match content data across Amazon and Broadkast platforms."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Matching AI Team" }]
+dependencies = [
+    "rapidfuzz>=3.14.0",
+    "sentence-transformers>=3.0.0",
+]
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "apps/dashboard", "apps/event_manager/src"]

@@ -1,0 +1,35 @@
+# Excluir entornos virtuales gigantes y cachés
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Excluir repositorios y metadatos
+.git/
+.gitignore
+.github/
+
+# Excluir datos locales masivos y artefactos de pruebas
+data/*
+!data/reference/
+!data/cache/
+data/cache/*.pt
+!data/output/
+data/output/*
+!data/output/production_mappings.csv
+logs/
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# Excluir credenciales y claves privadas de la imagen Docker
+infrastructure/credentials/
+*.pem
+*.key
+
+# Excluir archivos de entorno locales
+.env
+*.lock
+

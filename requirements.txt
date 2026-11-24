@@ -1,0 +1,33 @@
+# ==============================================================================
+# Matching AI - Project Dependencies
+# ==============================================================================
+
+# Core & AI Matching Engine
+sentence-transformers>=3.0.0
+torch>=2.2.0
+rapidfuzz>=3.10.0
+
+# Database & Storage Repositories
+psycopg2-binary>=2.9.9
+pymongo>=4.10.0
+sqlalchemy>=2.0.0
+
+# Data Processing & Financial ETL
+pandas>=2.2.0
+openpyxl>=3.1.2
+python-dotenv>=1.0.0
+
+# Business Intelligence Dashboard
+streamlit>=1.35.0
+plotly>=5.20.0
+
+# External APIs & Event Generation (YouTube & Google Drive)
+google-api-python-client>=2.182.0
+google-auth>=2.20.0
+google-auth-httplib2>=0.2.0
+
+# Testing & Development (Opcional)
+pytest>=8.0.0
+pytest-cov>=4.0.0
+
+

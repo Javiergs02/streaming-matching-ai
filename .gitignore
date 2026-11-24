@@ -1,0 +1,28 @@
+.env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.db
+.coverage
+.htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data and Cache
+data/
+scratch/
+*.pt
+*.csv
+*.html
+
+# Secrets and Credentials
+infrastructure/credentials/*.json
+!infrastructure/credentials/.gitkeep
+credentials/
+it_credentials_package/
+*.pem
+*.key
+
